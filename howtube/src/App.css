@@ -3,8 +3,10 @@
 }
 
 .App-logo {
-  height: 40vmin;
+  display: block;
+  height: 3vmin;
   pointer-events: none;
+  justify-content: left;
 }
 
 @media (prefers-reduced-motion: no-preference) {
@@ -13,17 +15,31 @@
   }
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.top-bar {
+  background-color: #11172a;
+  min-height: 6vh;
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   align-items: center;
   justify-content: center;
   font-size: calc(10px + 2vmin);
-  color: white;
+  color: rgb(147, 184, 88);
+}
+.search-bar {
+  align-items: center;
+  justify-content: center;
+}
+.search{
+  height: 3vh;
+  width: 50vh;
 }
 
+.submit {
+  background-color: #5e6d9d;
+  opacity: 0.2;
+  height: 3vh;
+  width: 15vh;
+}
 .App-link {
   color: #61dafb;
 }
