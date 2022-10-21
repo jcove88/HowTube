@@ -4,7 +4,8 @@
 ## 10/21/2022
 ## Developers: Niyibitanga Inosa, Michelle Lim, Michael Zetino, Zachary Azer, Jillian Coveney
 
-## Product Description: For curious people who love learning new things HowTube is a web application that
+## Product Description: 
+For curious people who love learning new things HowTube is a web application that
 specifically compiles various “How-To” (Life-Hack) videos from across sources. Unlike YouTube,
 our product consolidates all instructional videos into one domain, delivering a wide assortment
 of media from your favorite content creators across the web.
