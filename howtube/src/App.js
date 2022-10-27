@@ -1,13 +1,36 @@
 import {NavBar} from './NavBar';
 import {Categories} from './Categories';
+import { useEffect } from 'react';
+import jwt_decode from 'jwt-decode';
 import './App.css';
 
 function App() {
+
+  function handleCallbackResponse(response) {
+    console.log(response.credential);
+    var decode = jwt_decode(response.credential);
+    console.log(decode);
+  }
+
+  useEffect(() => {
+    /*global google*/
+    google.accounts.id.initialize({
+      client_id : "1005992755384-qo3qlur4eed9eaep9aqr0q3chltq38kn.apps.googleusercontent.com",
+      callback: handleCallbackResponse
+    });
+
+    google.accounts.id.renderButton(
+      document.getElementById("signInDiv"),
+      { theme: 'outline', size: 'large' }
+    );
+  },[]);
+
   return (
     <div className="App">
       <div className="Flex-container">
         <NavBar/>
         <Categories/>
+        <div id="signInDiv"></div>
         <body className="App-header">
         <div className="Video">
           <iframe width="300" height="174" src="https://www.youtube.com/embed/GLVQZ2sXtjw" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
