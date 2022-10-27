@@ -30,7 +30,6 @@ function App() {
       <div className="Flex-container">
         <NavBar/>
         <Categories/>
-        <div id="signInDiv"></div>
         <body className="App-header">
         <div className="Video">
           <iframe width="300" height="174" src="https://www.youtube.com/embed/GLVQZ2sXtjw" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>

@@ -1,7 +1,7 @@
 import React from 'react';
 import searchIcon from './images/SearchIcon.png';
 import logo from './images/Logo.png';
-import profile from './images/Profile.png';
+
 
 const NavBarStyle = {
 	'background-color': 'rgb(59,59,59)',
@@ -40,9 +40,9 @@ const SearchIconStyle = {
 	'height': '30px'
 }
 
-const ProfileIconStyle = {
+const SignInButtonStyle = {
 	'position': 'absolute',
-	'top':'0px',
+	'top':'23px',
 	'right':'0px',
 	'height':'75px',
 	'margin-top':'12px',
@@ -60,7 +60,7 @@ export class NavBar extends React.Component {
 				<button style={SearchButtonStyle}>
 					<img src={searchIcon} alt='search' style={SearchIconStyle}/>
 				</button>
-				<img src={profile} alt='profile' style={ProfileIconStyle}/>
+				<div id="signInDiv" style={SignInButtonStyle}></div>
 			</div>
 		);
 	}
