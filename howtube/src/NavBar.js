@@ -50,7 +50,7 @@ const SignInButtonStyle = {
 }
 
 export class NavBar extends React.Component {
-	render() {
+	render(user, handleSignOut) {
 		return (
 			<div style={NavBarStyle}>
 				<div style={LogoStyle}>
@@ -61,6 +61,7 @@ export class NavBar extends React.Component {
 					<img src={searchIcon} alt='search' style={SearchIconStyle}/>
 				</button>
 				<div id="signInDiv" style={SignInButtonStyle}></div>
+				
 			</div>
 		);
 	}

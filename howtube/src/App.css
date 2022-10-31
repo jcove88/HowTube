@@ -63,3 +63,13 @@
 p {
   margin: 5px;
 }
+
+.Sign-Out-Button {
+  position: absolute;
+	top: 23px;
+	right: 0px;
+	height: 40px;
+  width: 200px;
+	margin-top: 12px;
+	margin-right: 12px;
+}

@@ -1,17 +1,24 @@
 import {NavBar} from './NavBar';
 import {Categories} from './Categories';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import jwt_decode from 'jwt-decode';
 import './App.css';
 
 function App() {
-
+  const [ user, setUser ] = useState({});
   function handleCallbackResponse(response) {
     console.log(response.credential);
     var decode = jwt_decode(response.credential);
     console.log(decode);
+    setUser(decode);
+    document.getElementById("signInDiv").hidden = true;
   }
 
+  function handleSignOut(event){
+    setUser({});
+    document.getElementById("signInDiv").hidden = false;
+  }
+  
   useEffect(() => {
     /*global google*/
     google.accounts.id.initialize({
@@ -29,6 +36,9 @@ function App() {
     <div className="App">
       <div className="Flex-container">
         <NavBar/>
+        {Object.keys(user).length !== 0 &&
+					<button className="Sign-Out-Button" onClick={ (e) => handleSignOut(e)}>Sign Out</button>
+				}
         <Categories/>
         <body className="App-header">
         <div className="Video">
