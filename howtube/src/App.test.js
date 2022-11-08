@@ -208,3 +208,10 @@ it('has input for search', async () => {
   await fireEvent.change(search, { target: { value: inputWord } });
   expect(search.innerHTML).toBe(inputWord);
 })
+
+//categories returns the correct result
+it('returns category', ()=>{
+  const wrapper = <App/>;
+  var category = wrapper.getElementById('art');
+  
+})

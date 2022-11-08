@@ -13,25 +13,25 @@ export class Categories extends React.Component {
             <table>
                 <tr>
                     <td>
-                        <button style={buttonStyle}> ART </button>
+                        <button style={buttonStyle} className='art'> ART </button>
                     </td>
                     <td>
-                        <button style={buttonStyle}> COOKING </button>
+                        <button style={buttonStyle} className='cooking'> COOKING </button>
                     </td>
                     <td>
-                        <button style={buttonStyle}> BUILDING </button>
+                        <button style={buttonStyle} className='building'> BUILDING </button>
                     </td>
                     <td>
-                        <button style={buttonStyle}> HOME </button>
+                        <button style={buttonStyle} className='home'> HOME </button>
                     </td>
                     <td>
-                        <button style={buttonStyle}> VEHICLES </button>
+                        <button style={buttonStyle} className='vehicles'> VEHICLES </button>
                     </td>
                     <td>
-                        <button style={buttonStyle}> ORGANIZING </button>
+                        <button style={buttonStyle} className='organizing'> ORGANIZING </button>
                     </td>
                     <td>
-                        <button style={buttonStyle}> MAKEUP </button>
+                        <button style={buttonStyle} className='makeup'> MAKEUP </button>
                     </td>
                 </tr>
             </table>
