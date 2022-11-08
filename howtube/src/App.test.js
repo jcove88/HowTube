@@ -132,6 +132,46 @@ it('contains a video link'), async () => {
     link: 'www.youtube.com/watch?v=vFwD51mt5ww',
   });
 };
+test(`finds video link`, async () => {
+  expect.assertions(1);
+  try {
+    await ddb.get({TableName: 'Tester', Key: {id: '2'}});
+  } catch (e) {
+    expect(e.message).toBe(`Couldn't find link!`);
+  }
+});
+
+// Youtube API Search
+const mockYouTubeAPISearch = jest.fn(function(q, duration, safeSearch) {
+  if (q && duration)
+    return {response: "legos video under 5 min"};
+  if (q && safeSearch)
+    return {response: "safe legos video"};
+  if (q)
+    return {response: "legos video"}
+});
+it('calls YT Search using only keyword'), async () => {
+  const {Item} = await mockYouTubeAPISearch("legos").promise();
+
+  expect(Item).toEqual({
+    response: "legos video"
+  });
+};
+it('calls YT Search using keyword and duration'), async () => {
+  const {Item} = await mockYouTubeAPISearch("legos", "5 min").promise();
+
+  expect(Item).toEqual({
+    response: "legos video under 5 min"
+  });
+};
+it('calls YT Search using keyword and safeSearch'), async () => {
+  const {Item} = await mockYouTubeAPISearch("legos", null, "true").promise();
+
+  expect(Item).toEqual({
+    response: "safe legos video"
+  });
+};
+
 
 //test the landing page renders with no categories selected
 it('has no categories selected', async () => { 
