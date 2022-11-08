@@ -1,8 +1,9 @@
 import React from "react";
-import { render, unmountComponentAtNode, screen } from '@testing-library/react';
+import { render, unmountComponentAtNode, screen, fireEvent } from '@testing-library/react';
 import { act } from 'react-dom/test-utils'
 
 import App from './App';
+import { Categories } from "./Categories";
 
 const sum = require('./sum');
 module.exports = {
@@ -131,3 +132,39 @@ it('contains a video link'), async () => {
     link: 'www.youtube.com/watch?v=vFwD51mt5ww',
   });
 };
+
+//test the landing page renders with no categories selected
+it('has no categories selected', async () => { 
+  act(() => {
+    render(<Categories />, container)
+  });
+  expect(container.getElementById("filterDiv")).not.toBeVisible();
+})
+
+//test the category has been selected
+it('has category selection', async () => { 
+  const { getByTestId } = render(<Categories/>);
+  const testResponse = art
+  const selectedCategory = getByTestId("selectedCategoryDiv");
+  await selectCategory(testResponse);
+  expect(selectedCategory.toBeVisible());
+})
+
+//test the search button is disabled without input
+it('has no text in search field', async () => { 
+  const { getByTestId } = render(<App/>);
+  const search = getByTestId("searchBar");
+  const blankInput = "";
+  const button = getByTestId("searchButton")
+  await fireEvent.change(search, { target: { value: blankInput } });
+  expect(button.toHaveAttribute('disabled'));
+})
+
+//test the search bar changes to show input 
+it('has input for search', async () => { 
+  const { getByTestId } = render(<App/>);
+  const search = getByTestId("searchBar");
+  const inputWord = "legos";
+  await fireEvent.change(search, { target: { value: inputWord } });
+  expect(search.innerHTML).toBe(inputWord);
+})
