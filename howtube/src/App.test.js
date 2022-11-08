@@ -5,6 +5,30 @@ import { act } from 'react-dom/test-utils'
 import App from './App';
 
 const sum = require('./sum');
+module.exports = {
+  tables: [
+    {
+      TableName: `Tester`,
+      KeySchema: [{AttributeName: 'id', KeyType: 'HASH'}],
+      AttributeDefinitions: [{AttributeName: 'id', AttributeType: 'S'}],
+      ProvisionedThroughput: {ReadCapacityUnits: 1, WriteCapacityUnits: 1},
+    },
+    // etc
+  ],
+};
+const {DocumentClient} = require('aws-sdk/clients/dynamodb');
+
+const isTest = process.env.JEST_WORKER_ID;
+const config = {
+  convertEmptyValues: true,
+  ...(isTest && {
+    endpoint: 'localhost:8000',
+    sslEnabled: false,
+    region: 'local-env',
+  }),
+};
+
+const ddb = new DocumentClient(config);
 
 test('adds 2 + 3 to equal 5', () => {
   expect(sum(2, 3)).toBe(5);
@@ -65,3 +89,45 @@ it("handleSignIn", () => {
 })
 
 //test that the handle sign out function is called when the sign out 
+
+it('should insert item into table', async () => {
+  await ddb
+    .put({TableName: 'Tester', Item: {id: '1', hello: 'world'}})
+    .promise();
+
+  const {Item} = await ddb.get({TableName: 'files', Key: {id: '1'}}).promise();
+
+  expect(Item).toEqual({
+    id: '1',
+    hello: 'world',
+  });
+});
+test(`Can't find item`, async () => {
+  expect.assertions(1);
+  try {
+    await ddb.get('id', 'test');
+  } catch (e) {
+    expect(e.message).toBe(`Couldn't find test!`);
+  }
+});
+test(`DynamoDB doesn't work`, async () => {
+  awsSdkPromiseResponse.mockReturnValueOnce(Promise.reject(new Error('some error')));
+  expect.assertions(1);
+  try {
+    await getPet('id', 'test');
+  } catch (e) {
+    expect(e.message).toBe(`some error`);
+  }
+});
+
+it('contains a video link'), async () => {
+  await ddb
+  .put({TableName: 'Tester', Item: {id: '2', link: 'www.youtube.com/watch?v=vFwD51mt5ww'}})
+  .promise();
+  const {Item} = await ddb.get({TableName: 'files', Key: {id: '2'}}).promise();
+
+  expect(Item).toEqual({
+    id: '2',
+    link: 'www.youtube.com/watch?v=vFwD51mt5ww',
+  });
+};
