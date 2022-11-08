@@ -45,7 +45,7 @@ function App() {
           <iframe width="300" height="174" src="https://www.youtube.com/embed/GLVQZ2sXtjw" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
           <div className="Description-container">
             <p>
-            THE UPSIDE DOWN!!! LEGO Stranger Things - Set 75810 Time-lapse Build and Review!
+            THE UPSIDE DOWN!!! LEGO Stranger Inosa Things - Set 75810 Time-lapse Build and Review!
             </p>
             <div className="Description-text">
               <p>
