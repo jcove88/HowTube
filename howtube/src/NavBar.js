@@ -49,8 +49,20 @@ const SignInButtonStyle = {
 	'margin-right':'12px',
 }
 
+const SignedInDivStyle = {
+	'position': 'absolute',
+	'top':'0px',
+	'right':'0px',
+	'margin-top':'15px',
+	'margin-right':'225px',
+}
+
+const ProfilePicStyle = {
+	'width':'75px'
+}
+
 export class NavBar extends React.Component {
-	render(user, handleSignOut) {
+	render() {
 		return (
 			<div style={NavBarStyle}>
 				<div style={LogoStyle}>
@@ -61,7 +73,9 @@ export class NavBar extends React.Component {
 					<img src={searchIcon} alt='search' style={SearchIconStyle}/>
 				</button>
 				<div id="signInDiv" style={SignInButtonStyle}></div>
-				
+				<div id="signedInDiv" style={SignedInDivStyle}>
+					<img src={this.props.picture} alt="" style={ProfilePicStyle}></img>
+				</div>
 			</div>
 		);
 	}
