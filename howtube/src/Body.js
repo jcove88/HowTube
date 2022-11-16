@@ -1,9 +1,12 @@
 import React from "react";
+import {Home} from "./Home";
 
-export class Body extends React.Component{
-    render(){
-        return(
-           <p>hello</p>
-        )
+export function Body(props){
+    switch (props.selectedPage){
+        case "saved":
+            return <p>hello</p>;
+        default:
+            return <Home/>;
     }
+
 }
