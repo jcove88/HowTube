@@ -1,6 +1,7 @@
 import React from 'react';
 import searchIcon from './images/SearchIcon.png';
 import logo from './images/Logo.png';
+import { ytSearchBar } from './Search';
 
 
 const NavBarStyle = {
@@ -68,8 +69,8 @@ export class NavBar extends React.Component {
 				<div style={LogoStyle}>
 					<img src={logo} alt='HowTube' style={LogoStyle}/>
 				</div>
-				<input style={InputStyle}></input>
-				<button style={SearchButtonStyle}>
+				<input style={InputStyle} id="searchBar"></input>
+				<button style={SearchButtonStyle} onClick={ytSearchBar()}>
 					<img src={searchIcon} alt='search' style={SearchIconStyle}/>
 				</button>
 				<div id="signInDiv" style={SignInButtonStyle}></div>

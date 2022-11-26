@@ -1,34 +1,34 @@
-function loadClient() {
-    gapi.client.setApiKey("YOUR_API_KEY");
-    return gapi.client.load("https://www.googleapis.com/discovery/v1/apis/youtube/v3/rest")
-        .then(function() { console.log("GAPI client loaded for API"); },
-              function(err) { console.error("Error loading GAPI client for API", err); });
-  }
-
-function ytSearch(keyword) {
-    loadClient();
-    return gapi.client.youtube.search.list({
-      "part": [
-        "snippet"
-      ],
-      "maxResults": 5,
-      "q": "how to" + keyword
+async function ytSearch(input) {
+  input = 'how to ' + input
+  console.log(`input: ${input}`)
+  const searchResults = await fetch(`https://youtube.googleapis.com/youtube/v3/search?part=snippet&q=${input}&key=AIzaSyDEEH7KRtxexg17ArcMO7NqFm1Sqpna1xY`, {
+    Accept: 'application/json'
+  })
+    .then((response) => {
+      return response.json()
     })
-        .then(function(response) {
-                return ytSearchResponseHandler(response.json());
-              },
-              function(err) { console.error("Execute error", err); });
+    .then((results) => {
+      return ytSearchResponseHandler(results)
+    })
+  console.log(searchResults)
+  return searchResults
 };
 
 function ytSearchResponseHandler(results) {
-    const searchResults = []
-    results.items.forEach(item => {
+    const searchResults = {}
+    results['items'].forEach(item => {
         if (item !== "snippet") {
-            let url = "https://www.youtube.com/watch?v=" + item.videoId;
-            searchResults.push(url)
+            let url = "https://www.youtube.com/watch?v=" + item.id.videoId;
+            searchResults[url] = item
         }
     });
     return searchResults
+};
+
+function ytSearchBar() {
+  const input = document.getElementById('searchBar').value
+
+  return ytSearch(input);
 }
 
-export {loadClient, ytSearch, ytSearchResponseHandler};
+export { ytSearch, ytSearchResponseHandler, ytSearchBar};

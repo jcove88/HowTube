@@ -1,4 +1,5 @@
 import React from 'react';
+import { ytSearch } from './Search';
 
 const buttonStyle = {
     'background-color': 'rgb(217,217,217)',
@@ -13,25 +14,25 @@ export class Categories extends React.Component {
             <table>
                 <tr>
                     <td>
-                        <button style={buttonStyle} className='art'> ART </button>
+                        <button style={buttonStyle} className='art' onClick={ ytSearch('art')}> ART </button>
                     </td>
                     <td>
-                        <button style={buttonStyle} className='cooking'> COOKING </button>
+                        <button style={buttonStyle} className='cooking' onClick={ ytSearch('cooking')}> COOKING </button>
                     </td>
                     <td>
-                        <button style={buttonStyle} className='building'> BUILDING </button>
+                        <button style={buttonStyle} className='building' onClick={ ytSearch('building')}> BUILDING </button>
                     </td>
                     <td>
-                        <button style={buttonStyle} className='home'> HOME </button>
+                        <button style={buttonStyle} className='home' onClick={ ytSearch('home')}> HOME </button>
                     </td>
                     <td>
-                        <button style={buttonStyle} className='vehicles'> VEHICLES </button>
+                        <button style={buttonStyle} className='vehicles' onClick={ ytSearch('vehicles')}> VEHICLES </button>
                     </td>
                     <td>
-                        <button style={buttonStyle} className='organizing'> ORGANIZING </button>
+                        <button style={buttonStyle} className='organizing' onClick={ ytSearch('organizing')}> ORGANIZING </button>
                     </td>
                     <td>
-                        <button style={buttonStyle} className='makeup'> MAKEUP </button>
+                        <button style={buttonStyle} className='makeup' onClick={ ytSearch('makeup')}> MAKEUP </button>
                     </td>
                 </tr>
             </table>
