@@ -1,5 +1,4 @@
 import {NavBar} from './NavBar';
-import {Body} from './Body';
 import {Categories} from './Categories';
 import { useEffect, useState } from 'react';
 import jwt_decode from 'jwt-decode';
@@ -7,7 +6,6 @@ import './App.css';
 
 function App() {
   const [ user, setUser ] = useState({});
-  const [ page, setPage ] = useState({});
   function handleCallbackResponse(response) {
     console.log(response.credential);
     var decode = jwt_decode(response.credential);
@@ -19,7 +17,6 @@ function App() {
 
   function handleSignOut(event){
     setUser({});
-    setPage({});
     document.getElementById("signInDiv").hidden = false;
     document.getElementById("signedInDiv").hidden = true;
   }
@@ -37,10 +34,6 @@ function App() {
     );
   },[]);
 
-  function handlePageChange(event) {
-    setPage(event.target.value);
-  }
-
   return (
     <div className="App">
       <div className="Flex-container">
@@ -48,15 +41,13 @@ function App() {
         {Object.keys(user).length !== 0 &&
           <div>
             <button className="Sign-Out-Button" onClick={ (e) => handleSignOut(e)}>Sign Out</button>
-            <select value={page} onChange={(e) => handlePageChange(e)}>
-              <option value="home">home</option>
-              <option value="saved">saved</option>
-            </select>
           </div>
 				}
         <Categories/>
-        <body className="App-header">
-            <Body selectedPage = {page}/>
+        <body id="body">
+          <p>
+            hello
+          </p>
         </body>
       </div>
     </div>

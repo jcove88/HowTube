@@ -70,7 +70,7 @@ export class NavBar extends React.Component {
 					<img src={logo} alt='HowTube' style={LogoStyle}/>
 				</div>
 				<input style={InputStyle} id="searchBar"></input>
-				<button style={SearchButtonStyle} onClick={ytSearchBar()}>
+				<button style={SearchButtonStyle} onClick={() => ytSearchBar()}>
 					<img src={searchIcon} alt='search' style={SearchIconStyle}/>
 				</button>
 				<div id="signInDiv" style={SignInButtonStyle}></div>

@@ -1,3 +1,6 @@
+import React from "react"
+import ReactDOM from 'react-dom/client'
+
 async function ytSearch(input) {
   input = 'how to ' + input
   console.log(`input: ${input}`)
@@ -10,12 +13,13 @@ async function ytSearch(input) {
     .then((results) => {
       return ytSearchResponseHandler(results)
     })
-  console.log(searchResults)
+  console.log(searchResults);
+  Home(searchResults);
   return searchResults
 };
 
 function ytSearchResponseHandler(results) {
-    const searchResults = {}
+    const searchResults = {};
     results['items'].forEach(item => {
         if (item !== "snippet") {
             let url = "https://www.youtube.com/watch?v=" + item.id.videoId;
@@ -31,4 +35,34 @@ function ytSearchBar() {
   return ytSearch(input);
 }
 
-export { ytSearch, ytSearchResponseHandler, ytSearchBar};
+function Home(searchResults){
+  const urls = Object.keys(searchResults);
+  let componentList = [];
+  urls.forEach(url => {
+      let embeddedUrl = url.replace("watch?v=","embed/");
+      componentList.push(
+          <div className="Video">
+              <iframe width="300" height="174" src={embeddedUrl} title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+              <div className="Description-container">
+                  <p>
+                    {searchResults[url].snippet.title};
+                  </p>
+                  <div className="Description-text">
+                  <p>
+                    {searchResults[url]["snippet"]["channelTitle"]}
+                  </p>
+                  <p>
+                    {searchResults[url].snippet.description};
+                  </p>
+              </div>
+          </div>
+      </div>
+      )
+  })
+  const root = ReactDOM.createRoot(
+    document.getElementById("body")
+  )
+  root.render(componentList);
+}
+
+export { ytSearch, ytSearchResponseHandler, ytSearchBar };
