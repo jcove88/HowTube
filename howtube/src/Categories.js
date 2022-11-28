@@ -5,7 +5,9 @@ const buttonStyle = {
     'background-color': 'rgb(217,217,217)',
     'border-radius': '12px',
     'width': '150px',
-    'margin': '25px',
+    'margin-top': '25px',
+    'margin-left': '25px',
+    'margin-right': '25px',
 }
 
 export class Categories extends React.Component {

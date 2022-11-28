@@ -1,5 +1,9 @@
 .App {
   text-align: center;
+  position: relative;
+  background-color: #64626F;
+  height: 100%;
+  width: 100%;
 }
 
 .App-logo {
@@ -40,8 +44,11 @@
 .Video  {
   display: flex;
   margin-left: 20px;
-  align-items: flex-start;
+  margin-right: 20px;
   margin-top: 10px;
+  margin-bottom:10px;
+  align-items: flex-start;
+  background-color: lightgrey;
 }
 
 .Description-container  { 
@@ -50,14 +57,17 @@
   text-align: left;
   margin-left: 20px;
   overflow: hidden;
-  height: 175px;
+  height: 174px;
   font-size: large;
   font-weight: bold;
+  color: black;
 }
 
 .Description-text {
   font-size: medium;
   font-weight: normal;
+  line-height: 20pt;
+  color: black;
 }
 
 p {

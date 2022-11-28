@@ -3,6 +3,7 @@ import {Categories} from './Categories';
 import { useEffect, useState } from 'react';
 import jwt_decode from 'jwt-decode';
 import './App.css';
+import { WelcomePage } from './WelcomePage';
 
 function App() {
   const [ user, setUser ] = useState({});
@@ -45,13 +46,12 @@ function App() {
 				}
         <Categories/>
         <body id="body">
-          <p>
-            hello
-          </p>
+          <WelcomePage/>
         </body>
       </div>
     </div>
   );
 }
+
 
 export default App;
