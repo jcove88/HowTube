@@ -1,5 +1,5 @@
 import React from 'react';
-import { ytSearch } from './Search';
+import { ytSearch, Home } from './Search';
 
 const buttonStyle = {
     'background-color': 'rgb(217,217,217)',
@@ -9,6 +9,8 @@ const buttonStyle = {
     'margin-left': '25px',
     'margin-right': '25px',
 }
+
+let myfavorites = {}
 
 export class Categories extends React.Component {
     render() {
@@ -25,9 +27,6 @@ export class Categories extends React.Component {
                         <button style={buttonStyle} className='building' onClick={() => ytSearch('building')}> BUILDING </button>
                     </td>
                     <td>
-                        <button style={buttonStyle} className='home' onClick={() => ytSearch('home')}> HOME </button>
-                    </td>
-                    <td>
                         <button style={buttonStyle} className='vehicles' onClick={() => ytSearch('vehicles')}> VEHICLES </button>
                     </td>
                     <td>
@@ -36,8 +35,12 @@ export class Categories extends React.Component {
                     <td>
                         <button style={buttonStyle} className='makeup' onClick={() => ytSearch('makeup')}> MAKEUP </button>
                     </td>
+                    <td>
+                        <button style={buttonStyle} className='myfavorites' onClick={() => Home(myfavorites)}> My Favorites </button>
+                    </td>
                 </tr>
             </table>
         )
     }
 }
+export{myfavorites}

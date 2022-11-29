@@ -1,5 +1,6 @@
 import React from "react"
 import ReactDOM from 'react-dom/client'
+import { myfavorites } from './Categories'
 
 async function ytSearch(input) {
   input = 'how to ' + input
@@ -54,6 +55,9 @@ function Home(searchResults){
                   <p>
                     {searchResults[url].snippet.description};
                   </p>
+                  <button onClick={()=> url in myfavorites? delete searchResults[url] : myfavorites[url] = searchResults[url]}>
+                    heart
+                  </button>
               </div>
           </div>
       </div>
@@ -65,4 +69,4 @@ function Home(searchResults){
   root.render(componentList);
 }
 
-export { ytSearch, ytSearchResponseHandler, ytSearchBar };
+export { ytSearch, ytSearchResponseHandler, ytSearchBar, Home };
