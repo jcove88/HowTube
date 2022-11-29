@@ -43,7 +43,7 @@ function Home(searchResults){
       let embeddedUrl = url.replace("watch?v=","embed/");
       componentList.push(
           <div className="Video">
-              <iframe width="300" height="174" src={embeddedUrl} title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+              <iframe width="300" height="174" src={embeddedUrl} title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowFullScreen="allowFullScreen"></iframe>
               <div className="Description-container">
                   <p>
                     {searchResults[url].snippet.title};
