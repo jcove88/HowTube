@@ -21,6 +21,20 @@ function App() {
     document.getElementById("signInDiv").hidden = false;
     document.getElementById("signedInDiv").hidden = true;
   }
+
+  useEffect(() => {
+    const keyDownHandler = event => {
+		  if (event.key === 'Enter') {
+			  event.preventDefault();
+			  document.getElementById("searchButton").click();
+		  }
+	  }
+	  document.addEventListener('keydown', keyDownHandler);
+
+    return () => {
+      document.removeEventListener('keydown', keyDownHandler);
+    };
+  }, []);
   
   useEffect(() => {
     /*global google*/

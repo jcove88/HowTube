@@ -80,7 +80,7 @@ export class NavBar extends React.Component {
 					<img src={logo} alt='HowTube' style={LogoStyle} onClick={()=> backHome()}/>
 				</div>
 				<input style={InputStyle} id="searchBar"></input>
-				<button style={SearchButtonStyle} onClick={() => ytSearchBar()}>
+				<button id="searchButton" style={SearchButtonStyle} onClick={() => ytSearchBar()}>
 					<img src={searchIcon} alt='search' style={SearchIconStyle}/>
 				</button>
 				<div id="signInDiv" style={SignInButtonStyle}></div>
@@ -88,6 +88,8 @@ export class NavBar extends React.Component {
 					<img src={this.props.picture} alt="" style={ProfilePicStyle}></img>
 				</div>
 			</div>
+
+			
 		);
 	}
 }
