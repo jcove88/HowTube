@@ -1,7 +1,9 @@
 import React from 'react';
+import ReactDOM from 'react-dom/client'
 import searchIcon from './images/SearchIcon.png';
 import logo from './images/Logo.png';
-import { Home, ytSearchBar } from './Search';
+import { ytSearchBar } from './Search';
+import { WelcomePage } from './WelcomePage';
 
 
 const NavBarStyle = {
@@ -62,12 +64,20 @@ const ProfilePicStyle = {
 	'width':'75px'
 }
 
+function backHome(){
+	const bakcPage = <WelcomePage/>
+	const root = ReactDOM.createRoot(
+		document.getElementById("body")
+	  )
+	  root.render(bakcPage);
+}
+
 export class NavBar extends React.Component {
 	render() {
 		return (
 			<div style={NavBarStyle}>
 				<div style={LogoStyle}>
-					<img src={logo} alt='HowTube' style={LogoStyle} onClick={()=> Home({})}/>
+					<img src={logo} alt='HowTube' style={LogoStyle} onClick={()=> backHome()}/>
 				</div>
 				<input style={InputStyle} id="searchBar"></input>
 				<button style={SearchButtonStyle} onClick={() => ytSearchBar()}>

@@ -1,6 +1,7 @@
 import React from "react"
 import ReactDOM from 'react-dom/client'
 import { myfavorites } from './Categories'
+import { Favorites } from "./Heart"
 
 async function ytSearch(input) {
   input = 'how to ' + input
@@ -66,7 +67,12 @@ function Home(searchResults){
   const root = ReactDOM.createRoot(
     document.getElementById("body")
   )
-  root.render(componentList);
+  if(Object.keys(componentList).length === 0){
+    const favorites = <Favorites/>
+    root.render(favorites);
+  }
+  else
+    root.render(componentList);
 }
 
 export { ytSearch, ytSearchResponseHandler, ytSearchBar, Home };
